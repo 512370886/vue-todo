@@ -1,11 +1,11 @@
 <template>
 <!-- 定义头部的部分。头部只有一个标题 -->
-  <header class="main-header">
+  <header :class="$style.mainHeader">
     <h1>todo list</h1>
   </header>
 </template>
 
-<style lang="stylus" scoped>
+<style lang="stylus" module>
 .main-header{
   text-align center
   h1{
@@ -16,4 +16,6 @@
   }
 }
 </style>
+
+<!--<docs>#abc = 123</docs>-->
 

@@ -26,11 +26,11 @@ export default {
     }
   },
   methods: {
-    deleteTodoItem() {
-      this.$emit('delItem',this.todo.id); //通过 emit，将删除操作传递给父组件
+    deleteTodoItem () {
+      this.$emit('delItem', this.todo.id) // 通过 emit，将删除操作传递给父组件
     }
   }
-};
+}
 </script>
 
 

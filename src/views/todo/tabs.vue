@@ -30,32 +30,31 @@ export default {
       type: String,
       required: true
     },
-    todoDatas:{
-      type:Array,
-      required:true
+    todoDatas: {
+      type: Array,
+      required: true
     }
   },
-  data() {
+  data () {
     return {
-      states: ["all", "active", "completed"]
-    };
+      states: ['all', 'active', 'completed']
+    }
   },
-  computed:{
-    unFinishedTodoLength(){
+  computed: {
+    unFinishedTodoLength () {
       // filter之后，会得到一个新的数组。将新数组的长度返回，然后就可以在上方的 class="left" 标签中使用
       return this.todoDatas.filter(todo => !todo.computed).length
     }
   },
   methods: {
-    clearAllCompleted() {
-      this.$emit('clearAllCompleted');
-
+    clearAllCompleted () {
+      this.$emit('clearAllCompleted')
     },
-    toggleFilter(state) {
-      this.$emit('toggle',state);  //传递出去的值，就是下一个 filter 的状态
+    toggleFilter (state) {
+      this.$emit('toggle', state) // 传递出去的值，就是下一个 filter 的状态
     }
   }
-};
+}
 </script>
 
 <style lang="stylus" scoped>

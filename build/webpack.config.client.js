@@ -44,8 +44,16 @@ if (isDev) {
                     // stylus 预处理（这个只在开发环境中使用）
                     test: /\.styl/,
                     use: [
-                        'style-loader',
+//                      'style-loader',
+                        'vue-style-loader',
                         'css-loader',
+//                      {
+//                      	loader: 'css-loader',
+//                      	options: {
+//                      		module: true,
+//                      	    localIdentName: isDev ? '[path]-[name]-[hash:base64:5]' : '[hash:base64:5]'
+//                      	}
+//                      },
                         {//使用 'postcss-loader'所生成的 sourceMap，而不要使用 'stylus-loader' 所生成的 sourceMap
                             loader: 'postcss-loader',
                             options: {
@@ -82,7 +90,7 @@ if (isDev) {
                     // stylus 预处理（这个只在生产环境中使用）
                     test: /\.styl/,
                     use: ExtractPlugin.extract({
-                        fallback: 'style-loader',
+                        fallback: 'vue-style-loader',
                         use: [
                             'css-loader',
                             {//使用 'postcss-loader'所生成的 sourceMap，而不要使用 'stylus-loader' 所生成的 sourceMap

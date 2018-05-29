@@ -18,6 +18,12 @@ const config = {
     },
     module: {
         rules: [
+            {
+            	test: /\.(vue|js|jsx)$/,
+            	loader: 'eslint-loader',
+            	exclude: /node_modules/,
+            	enforce: 'pre'
+            },
             //加载 vue 文件
             {
                 // test的意思是：检测文件类型

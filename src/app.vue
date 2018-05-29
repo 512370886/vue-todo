@@ -9,21 +9,22 @@
 </template>
 
 <script>
-//导入子组件。注意，Header 组件要大写，避免与默认的 header 标签冲突
-import Header from "./layout/header.vue";
-import Content from "./views/todo/content.vue";
-import Footer from "./layout/footer.jsx";
+// 导入子组件。注意，Header 组件要大写，避免与默认的 header 标签冲突
+import Header from './layout/header.vue'
+import Content from './views/todo/content.vue'
+import Footer from './layout/footer.jsx'
 
+// console.log(Header.__docs)
 
 export default {
-  //【重要】要在 components 中声明子组件，才能在上面的
+  // 【重要】要在 components 中声明子组件，才能在上面的
   components: {
     Header,
     Footer,
-    Content,
-    
+    Content
+
   }
-};
+}
 </script>
 
 <style lang="stylus" scoped>

@@ -36,58 +36,58 @@
 </template>
 
 <script>
-import Item from "./item.vue";
-import Tabs from "./tabs.vue";
+import Item from './item.vue'
+import Tabs from './tabs.vue'
 
-let id = 0;
+let id = 0
 export default {
-  data() {
+  data () {
     return {
       todoDatas: [],
-      filter: "all"
-    };
+      filter: 'all'
+    }
   },
   components: {
-    Item, //自定义的子组件 Item
-    Tabs //自定义的子组件 tabs
+    Item, // 自定义的子组件 Item
+    Tabs // 自定义的子组件 tabs
   },
   computed: {
-    //已经被过滤过的todos
-    filteredTodos() {
-      //情况一：显示全部的items
-      if (this.filter === "all") {
-        return this.todoDatas;
+    // 已经被过滤过的todos
+    filteredTodos () {
+      // 情况一：显示全部的items
+      if (this.filter === 'all') {
+        return this.todoDatas
       }
-      //情况二：
-      const completed = this.filter === "completed";
-      return this.todoDatas.filter(todo => completed === todo.completed);
+      // 情况二：
+      const completed = this.filter === 'completed'
+      return this.todoDatas.filter(todo => completed === todo.completed)
     }
   },
   methods: {
-    addTodoItem(e) {
-      //e 指的是 event 对象
+    addTodoItem (e) {
+      // e 指的是 event 对象
       this.todoDatas.unshift({
-        //unshift()：在在数组的最前面插入一个item
-        id: id++, //每个item都有一个id。最开始的时候，id为0，新来的item，让id加一
-        content: e.target.value.trim(), //获取输入框中的内容
-        completed: false //新的item，默认都是未完成的状态
-      });
-      e.target.value = ""; //item添加完成后，清空输入框
+        // unshift()：在在数组的最前面插入一个item
+        id: id++, // 每个item都有一个id。最开始的时候，id为0，新来的item，让id加一
+        content: e.target.value.trim(), // 获取输入框中的内容
+        completed: false // 新的item，默认都是未完成的状态
+      })
+      e.target.value = '' // item添加完成后，清空输入框
     },
-    delTodoItem(id) {
+    delTodoItem (id) {
       this.todoDatas.splice(
         this.todoDatas.findIndex(todo => todo.id === id),
         1
-      ); //通过数组的 splice方法，删除item
+      ) // 通过数组的 splice方法，删除item
     },
-    toggleFilter(state) {
-      this.filter = state;
+    toggleFilter (state) {
+      this.filter = state
     },
-    clearAllCompleted() {
-      this.todoDatas = this.todoDatas.filter(todo => !todo.completed); //给todoDatas赋一个过滤之后的新的值
+    clearAllCompleted () {
+      this.todoDatas = this.todoDatas.filter(todo => !todo.completed) // 给todoDatas赋一个过滤之后的新的值
     }
   }
-};
+}
 </script>
 
 <style lang="stylus" scoped>

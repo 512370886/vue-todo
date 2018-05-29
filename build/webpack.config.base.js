@@ -8,6 +8,7 @@ const createVueLoaderOptions = require('./vue-loader.config')  //引入vue-loade
 
 const isDev = process.env.NODE_ENV === 'development' //我们在package.json中设置的环境变量，全部是存放在process.env中的
 const config = {
+	mode: process.env.NODE_ENV || 'production', // 直接收两个参数 production || development
     target: 'web', //表示webpack的编译目标是 web 平台
     //entry：入口文件
     entry: path.join(__dirname, '../src/index.js'), // __dirname 指的是根路径。将根路径、相对路径进行拼接，形成绝对路径。第二个参数是当前文件的相对路径

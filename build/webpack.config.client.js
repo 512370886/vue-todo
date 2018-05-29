@@ -69,16 +69,16 @@ if (isDev) {
         },
         devServer,
         plugins: defaultPlugins.concat([
-            new webpack.HotModuleReplacementPlugin(),
-            new webpack.NoEmitOnErrorsPlugin()   //减少出现 不必要的错误信息
+            new webpack.HotModuleReplacementPlugin()
+//          new webpack.NoEmitOnErrorsPlugin()   //减少出现 不必要的错误信息
         ])
     })
 } else {
     //对生产环境进行配置
     config = merge(baseConfig, {
         entry: {
-            app: path.join(__dirname, '../src/index.js'), //第二个参数是相对路径
-            vendor: ['vue']   //比如 vendor: ['vue','vue-rooter']
+            app: path.join(__dirname, '../src/index.js') //第二个参数是相对路径
+//          vendor: ['vue']   //比如 vendor: ['vue','vue-rooter']
         },
         output: {
             filename: '[name].[chunkhash:8].js' //对生产环境的文件名用 chunkhash
@@ -105,15 +105,21 @@ if (isDev) {
                 }
             ]
         },
+        optimization:{
+        	splitChunks: {
+        		chunks: 'all'
+        	},
+        	runtimeChunk: true
+        },
         //注意，plugins是数组
         plugins: defaultPlugins.concat([
             new ExtractPlugin('styles.[contentHash:8].css'),  //将输出的css文件进行hash转换
-            new webpack.optimize.CommonsChunkPlugin({
-                name: 'vendor'  //注意，name里的值是自己起的，但要和上面的值保持一致。
-            }),
-            new webpack.optimize.CommonsChunkPlugin({
-                name: 'runtime'
-            })
+//          new webpack.optimize.CommonsChunkPlugin({
+//              name: 'vendor'  //注意，name里的值是自己起的，但要和上面的值保持一致。
+//          }),
+//          new webpack.optimize.CommonsChunkPlugin({
+//              name: 'runtime'
+//          })
         ])
     })
 }
